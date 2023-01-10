@@ -41,6 +41,7 @@ namespace DataAccessLayer.Concrete
 
         public List<T> list(Expression<Func<T, bool>> filter)
         {
+            //komple liste döndürmek içim kullanılan linq metodudur.
             return _object.Where(filter).ToList();
         }
 
@@ -48,6 +49,12 @@ namespace DataAccessLayer.Concrete
         {
 
             db.SaveChanges();
+        }
+
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            //sadece 1 değer döndürmek için kullanılan linq metodudur
+           return _object.SingleOrDefault(filter);
         }
     }
 }

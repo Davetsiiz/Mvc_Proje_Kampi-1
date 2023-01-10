@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -7,26 +9,40 @@ using System.Web;
 
 namespace BusinessLayer.Concrete
 {
-    public class CategoryManagerBl
+    public class CategoryManagerBl : ICategoryService
     {
-        //2. katmandaki DAL daki GenericRepository dekitanımlanan metotlara erişmek için bir nesne üretildi
-        GenericRepositoryDal<Category> repo = new GenericRepositoryDal<Category>();
 
-        public List<Category> GetListBl()
+
+        ICategoryDal _categoryDal;
+
+        public CategoryManagerBl(ICategoryDal categoryDal)
         {
-            return repo.listDal();
+            _categoryDal = categoryDal;
         }
-        public void CategoryAddBl(Category p)
-        {
-            if (p.CategoryName == "" || p.CategoryName.Length <= 3 || p.CategoryDescription == "" || p.CategoryName.Length >= 50)
-            {
-                //hata mesajı
-            }
-            else
-            {
-                repo.Insert(p);
-            }
 
+        public void CategoryAddBl(Category category)
+        {
+            _categoryDal.Insert(category);
+        }
+
+        public void CategoryDelete(Category category)
+        {
+           _categoryDal.Delete(category);
+        }
+
+        public void CategoryUpdate(Category category)
+        {
+            _categoryDal.Update(category);
+        }
+
+        public Category GetByID(int id)
+        {
+            return _categoryDal.Get(x=>x.CategoryId== id);
+        }
+
+        public List<Category> GetList()
+        {
+            return _categoryDal.listDal();
         }
     }
 }

@@ -2,26 +2,46 @@
 @{
     Layout = null;
 }
-
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <h3>Mvc Kamp Tablo Örneği- Kategori</h3>
 <br />
-<table>
+<table class="table table-bordered">
     <tr>
         <th>ID</th>
         <th>Adı</th>
         <th>Açıklama</th>
         <th>Durumu</th>
+        <th>Güncelle</th>
     </tr>
     <tr>
         <td>1</td>
         <td>Eğitim</td>
         <td>Açıklaması</td>
         <td>True</td>
+        <td><button class="btn btn-success">Güncelle</button></td>
     </tr>
     <tr>
         <td>2</td>
         <td>Tiyatro</td>
         <td>Olumlu</td>
         <td>True</td>
+        <td><button class="btn btn-success">Güncelle</button></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Sinema</td>
+        <td>Olumlu</td>
+        <td>True</td>
+        <td><button class="btn btn-success">Güncelle</button></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Kitap</td>
+        <td>Bekleniyor</td>
+        <td>True</td>
+        <td><button class="btn btn-success">Güncelle</button></td>
     </tr>
 </table>
+<button class="btn btn-info">Yeni</button>
+<button class="btn btn-warning">Kategori Listesi</button>
+<button class="btn btn-danger">Kategori Açıklamaları</button>
